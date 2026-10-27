@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CR7 Legacy | Loja Oficial Sportswear & Luxury</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #070709;
+      --card-bg: rgba(18, 18, 24, 0.85);
+      --primary-gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+      --text-main: #f8f9fa;
+      --text-muted: #a1a1aa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .ambient-light {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      padding: 1.2rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      background: rgba(7, 7, 9, 0.85);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: 3px;
+      color: #fff;
+    }
+
+    .logo span {
+      color: var(--primary-gold);
+      text-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    nav {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary-gold);
+      text-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    .cart-btn {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--primary-gold);
+      color: var(--primary-gold);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s;
+    }
+
+    .cart-btn:hover {
+      background: var(--primary-gold);
+      color: #000;
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .cart-badge {
+      background: #fff;
+      color: #000;
+      font-size: 0.75rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .hero {
+      padding: 5rem 5% 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .badge-hero {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 20px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--primary-gold);
+      color: var(--primary-gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(180deg, #ffffff 30%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-light), var(--primary-gold));
+      color: #000;
+      font-weight: 800;
+      padding: 16px 38px;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 0 30px var(--gold-glow);
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+    }
+
+    .products-section {
+      padding: 5rem 6%;
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: #fff;
+    }
+
+    .section-header h2 span {
+      color: var(--primary-gold);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 20px;
+      padding: 1.8rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary-gold);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px var(--gold-glow);
+    }
+
+    .product-image-box {
+      width: 100%;
+      height: 280px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      position: relative;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image-box img {
+      transform: scale(1.05);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid var(--primary-gold);
+      color: var(--primary-gold);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      backdrop-filter: blur(4px);
+      z-index: 2;
+    }
+
+    .product-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .size-selector {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .size-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .size-btn.active, .size-btn:hover {
+      background: var(--primary-gold);
+      color: #000;
+      border-color: var(--primary-gold);
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .price-tag {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary-gold);
+    }
+
+    .store-info-section {
+      padding: 6rem 6%;
+      background: linear-gradient(180deg, transparent 0%, rgba(18, 18, 24, 0.9) 100%);
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      position: relative;
+      z-index: 10;
+    }
+
+    .info-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 20px;
+      padding: 2.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--primary-gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .info-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .info-item label {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .info-item p {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+      border: 1px solid #22c55e;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -450px;
+      width: 400px;
+      height: 100vh;
+      background: #0f0f13;
+      border-left: 1px solid var(--primary-gold);
+      z-index: 1000;
+      transition: right 0.4s ease;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .cart-drawer.open {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .cart-header h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: var(--primary-gold);
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      margin: 1.5rem 0;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.03);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .total-price {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      nav { display: none; }
+      .cart-drawer { width: 100vw; right: -100vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-light"></div>
+
+  <!-- Carrinho Lateral -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Seu Carrinho</h3>
+      <button class="close-cart" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items" id="cartItemsContainer">
+      <p style="color: var(--text-muted); text-align: center; margin-top: 2rem;">O seu carrinho está vazio.</p>
+    </div>
+    <div style="padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+      <div class="total-price">
+        <span>Total:</span>
+        <span id="cartTotal" style="color: var(--primary-gold);">R$ 0,00</span>
+      </div>
+      <button class="btn-gold" style="width: 100%;" onclick="alert('Checkout simulado com sucesso! Obrigado pela preferência.')">Finalizar Pedido</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">CR7 <span>LEGACY</span></div>
+    <nav>
+      <a href="#produtos">Coleção Completa</a>
+      <a href="#contato">Atendimento</a>
+      <a href="#localizacao">Showroom</a>
+    </nav>
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 Carrinho
+      <div class="cart-badge" id="cartCount">0</div>
+    </button>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="badge-hero">Mentalidade de Campeão</div>
+    <h1>Vista a Excelência.<br>Coleção Oficial CR7 Legacy.</h1>
+    <p>Todos os equipamentos, chuteiras, vestuário e acessórios exclusivos inspirados na trajetória de Cristiano Ronaldo.</p>
+    <div>
+      <a href="#produtos" class="btn-gold">Explorar Todos os Itens</a>
+    </div>
+  </section>
+
+  <!-- Catálogo de Produtos com as tuas fotos locais -->
+  <section class="products-section" id="produtos">
+    <div class="section-header">
+      <h2>Catálogo Completo <span>CR7 Legacy</span></h2>
+      <p style="color: var(--text-muted);">Produtos e fotos enviadas por ti.</p>
+    </div>
+
+    <div class="product-grid">
+      
+      <!-- 1. Bola Mercurial CR7 -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">EQUIPAMENTO OFICIAL</div>
+            <img src="012763P1A1.avif" alt="Bola Nike Mercurial CR7">
+          </div>
+          <h3>Bola Nike Mercurial CR7</h3>
+          <p>Bola de futebol vermelha e branca com design gráfico exclusivo, sulcos aerodinâmicos e assinatura oficial CR7.</p>
+          <div class="size-selector">
+            <button class="size-btn active">Tamanho 5</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 199,90</span>
+          <button class="btn-gold" onclick="addToCart('Bola Nike Mercurial CR7', 199.90)">Adicionar</button>
+        </div>
+      </div>
+
+      <!-- 2. Garrafa Squeeze Portugal CR7 -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">PERSONALIZÁVEL</div>
+            <img src="br-11134207-820lu-mtvb27apqm80ca.jpg" alt="Garrafa Térmica Portugal CR7">
+          </div>
+          <h3>Garrafa Squeeze Portugal CR7</h3>
+          <p>Garrafa térmica com bico esportivo, estampa de Portugal, o número 7 e espaço para personalização de nome.</p>
+          <div class="size-selector">
+            <button class="size-btn active">750ml</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 99,90</span>
+          <button class="btn-gold" onclick="addToCart('Garrafa Squeeze Portugal CR7', 99.90)">Adicionar</button>
+        </div>
+      </div>
+
+      <!-- 3. Caneleiras Nike Mercurial Lite CR7 -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">PROTEÇÃO PRO</div>
+            <img src="01563351A1.avif" alt="Caneleiras Nike Mercurial Lite CR7">
+          </div>
+          <h3>Caneleiras Nike Mercurial Lite CR7</h3>
+          <p>Caneleiras leves em tom gelo/branco com estampa geométrica texturizada e meias de suporte inclusas.</p>
+          <div class="size-selector">
+            <button class="size-btn">P</button>
+            <button class="size-btn active">M</button>
+            <button class="size-btn">G</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 149,90</span>
+          <button class="btn-gold" onclick="addToCart('Caneleiras Nike Mercurial Lite CR7', 149.90)">Adicionar</button>
+        </div>
+      </div>
+
+      <!-- 4. Chuteira Superfly White/Silver -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">CHUTEIRA ELITE</div>
+            <img src="images.jpg3.jpg" alt="Chuteira Nike Mercurial Superfly CR7 White">
+          </div>
+          <h3>Chuteira Nike Mercurial Superfly White</h3>
+          <p>Modelo de cano alto em tom branco perolado, solado cromado reflexivo e monograma CR7 lateral.</p>
+          <div class="size-selector">
+            <button class="size-btn">38</button>
+            <button class="size-btn active">40</button>
+            <button class="size-btn">42</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 1.299,90</span>
+          <button class="btn-gold" onclick="addToCart('Chuteira Nike Mercurial Superfly White', 1299.90)">Adicionar</button>
+        </div>
+      </div>
+
+      <!-- 5. Chuteira Superfly Black Diamond -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">EDITION DIAMOND</div>
+            <img src="c_pia_de_b840609d.jpg" alt="Chuteira Nike Mercurial Superfly Black">
+          </div>
+          <h3>Chuteira Nike Mercurial Superfly Black</h3>
+          <p>Versão preta texturizada com efeito brilhante estilo diamante negro e amortecimento avançado em campo.</p>
+          <div class="size-selector">
+            <button class="size-btn">39</button>
+            <button class="size-btn active">41</button>
+            <button class="size-btn">43</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 1.349,90</span>
+          <button class="btn-gold" onclick="addToCart('Chuteira Nike Mercurial Superfly Black', 1349.90)">Adicionar</button>
+        </div>
+      </div>
+
+      <!-- 6. Caneca Real Madrid CR7 -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">COLECIONÁVEL</div>
+            <img src="images.jpg2.jpg" alt="Caneca CR7 Real Madrid">
+          </div>
+          <h3>Caneca CR7 Real Madrid</h3>
+          <p>Caneca em cerâmica de alta qualidade com alça azul, estampando momentos épicos e autógrafo do craque.</p>
+          <div class="size-selector">
+            <button class="size-btn active">350ml</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 69,90</span>
+          <button class="btn-gold" onclick="addToCart('Caneca CR7 Real Madrid', 69.90)">Adicionar</button>
+        </div>
+      </div>
+
+      <!-- 7. Conjunto Moletom e Calça CR7 -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">AGASALHO WINTER</div>
+            <img src="br-11134207-7r98o-mahieu04bf2104.jpg" alt="Conjunto Moletom e Calça CR7">
+          </div>
+          <h3>Conjunto Moletom e Calça CR7</h3>
+          <p>Kit completo de blusa de capuz (hoodie) e calça jogger pretas com inscrições e detalhes dourados em alto relevo.</p>
+          <div class="size-selector">
+            <button class="size-btn">P</button>
+            <button class="size-btn active">M</button>
+            <button class="size-btn">G</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 449,90</span>
+          <button class="btn-gold" onclick="addToCart('Conjunto Moletom e Calça CR7', 449.90)">Adicionar</button>
+        </div>
+      </div>
+
+      <!-- 8. Camisa Portugal Special Black/Gold -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">SPECIAL EDITION</div>
+            <img src="camisa-portugal-2023-2024-cr7-cristiano-ronaldo-goat-preta-fan-9-2c48128d1f669a7e9516996194517302-1024-1024.webp" alt="Camisa Portugal Special Black/Gold">
+          </div>
+          <h3>Camisa Portugal Special Black/Gold</h3>
+          <p>Manto preto texturizado com detalhes e escudo da seleção em dourado metalizado e assinatura "The GOAT".</p>
+          <div class="size-selector">
+            <button class="size-btn active">P</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">G</button>
+            <button class="size-btn">GG</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 299,90</span>
+          <button class="btn-gold" onclick="addToCart('Camisa Portugal Special Black/Gold', 299.90)">Adicionar</button>
+        </div>
+      </div>
+
+      <!-- 9. Camisa Mashup All-Clubs -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">LIMITED MASHUP</div>
+            <img src="images.jpg" alt="Camisa Mashup CR7 All-Clubs">
+          </div>
+          <h3>Camisa Mashup CR7 All-Clubs</h3>
+          <p>Design exclusivo dividindo os maiores clubes da carreira: Sporting, Man. United, Real Madrid, Juventus e Al-Nassr.</p>
+          <div class="size-selector">
+            <button class="size-btn">P</button>
+            <button class="size-btn active">M</button>
+            <button class="size-btn">G</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 319,90</span>
+          <button class="btn-gold" onclick="addToCart('Camisa Mashup CR7 All-Clubs', 319.90)">Adicionar</button>
+        </div>
+      </div>
+
+      <!-- 10. Camiseta Vintage Bootleg Collage -->
+      <div class="product-card">
+        <div>
+          <div class="product-image-box">
+            <div class="product-tag">VINTAGE BOOTLEG</div>
+            <img src="br-11134201-23020-g4ofkrq3p1mv90.jpg" alt="Camiseta Vintage Bootleg Collage CR7">
+          </div>
+          <h3>Camiseta Vintage Bootleg Collage CR7</h3>
+          <p>Camiseta preta em malha estonada com estampa colagem retrô exibindo todas as eras vitoriosas da carreira do craque.</p>
+          <div class="size-selector">
+            <button class="size-btn">P</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn active">G</button>
+            <button class="size-btn">GG</button>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="price-tag">R$ 139,90</span>
+          <button class="btn-gold" onclick="addToCart('Camiseta Vintage Bootleg Collage CR7', 139.90)">Adicionar</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contato e Localização -->
+  <section class="store-info-section">
+    <div class="info-grid">
+      <div class="info-card" id="contato">
+        <h3>📞 Atendimento VIP</h3>
+        <div class="info-item">
+          <label>Telefone / WhatsApp Oficial</label>
+          <p>(11) 99888-7766</p>
+        </div>
+        <div class="info-item">
+          <label>E-mail de Suporte</label>
+          <p>contato@cr7legacyoficial.com.br</p>
+        </div>
+        <div class="info-item">
+          <label>Horário de Atendimento Online</label>
+          <p>Segunda a Sexta: 09h às 18h</p>
+        </div>
+        <button class="btn-gold" style="width: 100%; margin-top: 1rem;" onclick="window.open('https://wa.me/5511998887766', '_blank')">Chamar no WhatsApp</button>
+      </div>
+
+      <div class="info-card" id="localizacao">
+        <h3>📍 Showroom Conceito</h3>
+        <div class="info-item">
+          <label>Endereço</label>
+          <p>Av. Nove de Julho, 1200 - Sala 42</p>
+        </div>
+        <div class="info-item">
+          <label>Bairro & Região</label>
+          <p>Centro - Polo Comercial Metropolitano</p>
+        </div>
+        <div class="info-item">
+          <label>Cidade / Estado</label>
+          <p>Jundiaí - SP</p>
+        </div>
+        <div class="status-badge">
+          <div class="dot"></div>
+          Loja Aberta para Visitação
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 CR7 Legacy Store. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    let cart = [];
+
+    function toggleCart() {
+      document.getElementById('cartDrawer').classList.toggle('open');
+    }
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCartUI();
+      toggleCart();
+    }
+
+    function updateCartUI() {
+      document.getElementById('cartCount').innerText = cart.length;
+      const container = document.getElementById('cartItemsContainer');
+      
+      if (cart.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center; margin-top: 2rem;">O seu carrinho está vazio.</p>';
+        document.getElementById('cartTotal').innerText = 'R$ 0,00';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        html += `
+          <div class="cart-item">
+            <div>
+              <h4 style="font-size:0.95rem;">${item.name}</h4>
+              <p style="color:var(--primary-gold); font-weight:bold;">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
+            </div>
+            <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#ef4444; cursor:pointer; font-weight:bold;">Remover</button>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+      document.getElementById('cartTotal').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+  </script>
+
+</body>
+</html>
